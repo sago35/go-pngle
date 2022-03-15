@@ -199,7 +199,7 @@ void pngle_destroy(pngle_t *pngle)
 {
 	if (pngle) {
 		pngle_reset(pngle);
-		free(pngle);
+		//free(pngle);
 	}
 }
 
