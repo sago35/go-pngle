@@ -9,14 +9,11 @@ int pngle_decodeFromBytes(unsigned char *b, int length, int scale);
 */
 import "C"
 import (
-	"fmt"
 	"unsafe"
 )
 
 func DecodeFromBytes(b []byte) {
-	ret := C.pngle_decodeFromBytes((*C.uchar)(unsafe.Pointer(&b[0])), C.int(len(b)), C.int(0))
-
-	fmt.Printf("ret : %d\n", ret)
+	C.pngle_decodeFromBytes((*C.uchar)(unsafe.Pointer(&b[0])), C.int(len(b)), C.int(0))
 }
 
 var pngleBuf [256]uint16
