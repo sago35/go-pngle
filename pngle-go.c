@@ -1,5 +1,5 @@
-#include "pngle/include/miniz.h"
-#include "pngle/include/pngle.h"
+#include "miniz.h"
+#include "pngle.h"
 #include "pngle-go.h"
 
 void on_draw(pngle_t *pngle, uint32_t x, uint32_t y, uint32_t w, uint32_t h, uint8_t rgba[4])

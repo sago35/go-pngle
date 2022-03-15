@@ -1,13 +1,10 @@
 package pngle
 
 /*
-#cgo CFLAGS: -Ipngle/include
-#cgo CFLAGS: -Ipngle/src
 //#cgo CFLAGS: -DPNGLE_DEBUG
 
-#include "pngle/include/miniz.h"
-#include "pngle/include/pngle.h"
-int mainx();
+#include "miniz.h"
+#include "pngle.h"
 int decodeFromBytes(unsigned char *b, int length, int scale);
 */
 import "C"
