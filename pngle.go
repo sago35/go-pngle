@@ -5,7 +5,7 @@ package pngle
 
 #include "miniz.h"
 #include "pngle.h"
-int decodeFromBytes(unsigned char *b, int length, int scale);
+int pngle_decodeFromBytes(unsigned char *b, int length, int scale);
 */
 import "C"
 import (
@@ -14,7 +14,7 @@ import (
 )
 
 func DecodeFromBytes(b []byte) {
-	ret := C.decodeFromBytes((*C.uchar)(unsafe.Pointer(&b[0])), C.int(len(b)), C.int(0))
+	ret := C.pngle_decodeFromBytes((*C.uchar)(unsafe.Pointer(&b[0])), C.int(len(b)), C.int(0))
 
 	fmt.Printf("ret : %d\n", ret)
 }

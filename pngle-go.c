@@ -13,7 +13,7 @@ void on_draw(pngle_t *pngle, uint32_t x, uint32_t y, uint32_t w, uint32_t h, uin
     callbackFromPngle(x, y, w, h, r, g, b, a);
 }
 
-int decodeFromBytes(unsigned char *b, int length, int scale)
+int pngle_decodeFromBytes(unsigned char *b, int length, int scale)
 {
     pngle_t *pngle = pngle_new();
 
