@@ -3,7 +3,6 @@ package main
 import (
 	"image/color"
 	"log"
-
 	"time"
 
 	pngle "github.com/sago35/go-pngle"
@@ -38,7 +37,7 @@ func run() error {
 		display.SetPixel(int16(x), int16(y), c)
 	})
 
-	b := []byte(out_org_png)
+	b := []byte(pngImage)
 	pngle.DecodeFromBytes(b)
 
 	for {
