@@ -69,6 +69,8 @@ typedef enum {
 	PNGLE_CHUNK_gAMA = 0x67414d41UL, // gAMA
 } pngle_chunk_t;
 
+#define SCANLINE_RINGBUF_SIZE (2048)
+
 // typedef struct _pngle_t pngle_t; // declared in pngle.h
 struct _pngle_t {
 	pngle_ihdr_t hdr;
@@ -91,7 +93,7 @@ struct _pngle_t {
 
 	// scanline decoder (reset on every set_interlace_pass() call)
 	//uint8_t *scanline_ringbuf;
-	uint8_t scanline_ringbuf[512];
+	uint8_t scanline_ringbuf[SCANLINE_RINGBUF_SIZE];
 	size_t scanline_ringbuf_size;
 	size_t scanline_ringbuf_cidx;
 	int_fast8_t scanline_remain_bytes_to_render;
@@ -376,6 +378,9 @@ static int set_interlace_pass(pngle_t *pngle, uint_fast8_t pass)
 
 	//if (pngle->scanline_ringbuf) free(pngle->scanline_ringbuf);
 	//if ((pngle->scanline_ringbuf = PNGLE_CALLOC(pngle->scanline_ringbuf_size, 1, "scanline ringbuf")) == NULL) return PNGLE_ERROR("Insufficient memory");
+    if (pngle->scanline_ringbuf_size > SCANLINE_RINGBUF_SIZE) {
+        debug_printf("[pngle] scanline_ringbuf_size error = %zd\n", pngle->scanline_ringbuf_size);
+    }
 
 	pngle->drawing_x = interlace_off_x[pngle->interlace_pass];
 	pngle->drawing_y = interlace_off_y[pngle->interlace_pass];
